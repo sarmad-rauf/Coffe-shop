@@ -1,0 +1,29 @@
+<h1 class="mt-6">Dashboard</h1>
+<p class="lead mb-3">Hello user %></p>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<table table-bordered table-responsive>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>password</th>
+            <th>date</th>
+            <th colspan="2">action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (var i = 0; i < users.length ; i++) { %>
+        <tr>
+            <td><%= users[i].name  %></td>
+            <td><%= users[i].name  %></td>
+            <td><%= users[i].email  %></td>
+            <td><%= users[i].password%></td>
+            <td><%= users[i].date  %></td>
+            <td><button id="<%= users[i]._id  %>" class="btn btn-primary">Edit</button></td>
+            <td><button id="<%= users[i]._id  %>" class="btn btn-danger">Delete</button></td>
+        </tr>
+        <% } %>
+    </tbody>
+
+</table>
