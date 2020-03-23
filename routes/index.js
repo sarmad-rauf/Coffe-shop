@@ -5,6 +5,7 @@ const User = require('../models/User');
 //Welcome page...
 router.get('/', (req, res) => res.render('first'));
 
+
 router.get('/dashboard', (req, res) => {
     User.find((err, docs) => {
         if (err) {
@@ -16,5 +17,7 @@ router.get('/dashboard', (req, res) => {
         }
     });
 });
+
+
 
 module.exports = router;

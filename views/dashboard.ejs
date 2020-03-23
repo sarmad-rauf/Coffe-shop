@@ -20,8 +20,9 @@
             <td><%= users[i].email  %></td>
             <td><%= users[i].password%></td>
             <td><%= users[i].date  %></td>
-            <td><button id="<%= users[i]._id  %>" class="btn btn-primary">Edit</button></td>
-            <td><button id="<%= users[i]._id  %>" class="btn btn-danger">Delete</button></td>
+            <td><a class="btn btn-primary" href="./users/edit/<%= users[i].id %>">Edit</a></td>
+          
+            <td><a class="btn btn-danger delete" href="./users/delete/<%= users[i].id %>">Delete</a></td>
         </tr>
         <% } %>
     </tbody>

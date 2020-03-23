@@ -61,10 +61,6 @@ router.post('/register', (req, res) => {
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
 
-            // ye  enc ho k save ho rha 
-            // esay he esay dec kar k show kar 
-            // enc ki jaga ab dec show karna 
-
             if (err) throw err;
             newUser.password = hash;
             // save user
@@ -109,10 +105,25 @@ router.get('/dashboard', (req, res) => {
           else { console.log('Error') }
       });
   });
+
+  //Get single user for edit record
+  router.get('/edit/:id',function(req,res){
+console.log(req.params.id);
+User.findById(req.params.id, function(err, User){
+  if (err){
+    console.log(err);
+  }
+  else {
+    console.log(User);
+    res.render('edit',{users: User})
+  }
+})
+  })
   // edit delete
-  router.put('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`);
+  router.post('/edit/:id', (req, res) => {
+    
+    // if (!ObjectId.isValid(req.params.id))
+    //     return res.status(400).send(`No record with given id : ${req.params.id}`);
 // above 2 lines check that 
 // ObjectId is valid or not 
 // ObjectId of mongoose 
@@ -130,20 +141,31 @@ router.get('/dashboard', (req, res) => {
     // if id == "right"
     // then update my record
 // working :edit records
-    Employee.findByIdAndUpdate(req.params.id, { $set: emp }, { new: true }, (err, doc) => {
-        if (!err) { res.send(doc); }
-        else { console.log('Error') }
+    User.findByIdAndUpdate(req.params.id, { $set: emp }, { new: true }, (err, doc) => {
+        if (!err) { res.redirect('/dashboard'); }
+        else { console.log("Error"); }
     });
 });
 
-router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`);
+
+
+router.get('/delete/:id',(req,res)=>{
+  
+    // if (!ObjectId.isValid(req.params.id))
+    //     return res.status(400).send(`No record with given id aa : ${req.params.id}`);
 // working :delete records
-    Employee.findByIdAndRemove(req.params.id, (err, doc) => {
-        if (!err) { res.send(doc); }
+User.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err){
+        res.redirect('/dashboard')
+      }
         else { console.log('Error') }
+        
+        
     });
+
 });
+
+
+
 
 module.exports = router;
