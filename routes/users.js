@@ -38,7 +38,8 @@ router.post('/register', (req, res) => {
       name,
       email,
       password,
-      password2
+      password2,
+     
     });
   } else {
     User.findOne({ email: email }).then(user => {
@@ -49,13 +50,15 @@ router.post('/register', (req, res) => {
           name,
           email,
           password,
-          password2
+          password2,
+         
         });
       } else {
         const newUser = new User({
           name,
           email,
-          password
+          password,
+      
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -164,6 +167,8 @@ User.findByIdAndRemove(req.params.id, (err, doc) => {
     });
 
 });
+
+
 
 
 

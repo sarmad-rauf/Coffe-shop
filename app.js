@@ -4,6 +4,11 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const exphbs = require('express-handlebars');
+const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+const path = require('path');
+
 
  const app= express();
 
@@ -25,7 +30,7 @@ app.use(express.static(__dirname + '/public'));
 
 //BodyParser
 app.use(express.urlencoded({extended: false}));
-
+app.use(bodyParser.json());
 // Express Session
 app.use(session({
     secret: 'secret',
