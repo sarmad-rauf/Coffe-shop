@@ -9,9 +9,6 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-
-var io = require("socket.io")
-
  const app= express();
 
  // configure passport
