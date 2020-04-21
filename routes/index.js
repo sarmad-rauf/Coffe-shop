@@ -9,6 +9,10 @@ router.get('/', (req, res) => res.render('first'));
 //Contact
 router.get('/contact', (req, res) => res.render('contact'));
 
+
+    
+
+
 router.get('/dashboard', (req, res) => {
     User.find((err, docs) => {
         if (err) {
@@ -69,4 +73,6 @@ router.post('/contact', (req, res) => {
       res.render('first');
   });
 });
+
+
 module.exports = router;
