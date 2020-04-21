@@ -58,9 +58,7 @@ app.use((req, res, next) => {
  app.use('/', require('./routes/index'));
  app.use('/users', require('./routes/users'));
 
-//post,comment
-var Posts= require("./models/posts");
-var comments= require("./models/comments");
+
 
 
  
