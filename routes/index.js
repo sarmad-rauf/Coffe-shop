@@ -3,15 +3,37 @@ const router = express.Router();
 const User = require('../models/User');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const Comment=require('../models/comment');
 
 //Welcome page...
-router.get('/', (req, res) => res.render('first'));
+router.get("/", (req, res) => {
+    Comment.find((err, docs) => {
+      if (err) {
+        console.log("Errror in get data ");
+      } else {
+        res.render("first", { comments: docs });
+      }
+    });
+  });
+  router.post("/", async (req, res) => {
+    try {
+      if (!req.body) {
+        console.log("body is empty");
+      } else {
+        let data = { ...req.body };
+        console.log(data);
+        Comment.create(data);
+        res.render('contact'); }
+    } catch (error) {
+      console.log("error");
+    }
+  });
+
+
 //Contact
 router.get('/contact', (req, res) => res.render('contact'));
 
-
-    
-
+ 
 
 router.get('/dashboard', (req, res) => {
     User.find((err, docs) => {

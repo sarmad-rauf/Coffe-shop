@@ -131,9 +131,45 @@
 			<footer style="padding: 10%;color: blueviolet;">
 				<p style="font-size: xx-large;">You can contact us on 03364213641</p>
 				<p style="font-size: medium;">Or email us</p>
-				<a style="box-sizing: content-box;" href="/contact" class="primary-btn text-uppercase">Email</a>
-			</footer>	
-			
+				<a style="box-sizing: content-box; border:2px solid;" href="/contact" class="primary-btn text-uppercase">Email</a>
+			<br>
+			<br>	
+			 <form class="form-signin" method="post" action="/">
+				<input
+				  style="height: 100px;"
+				  type="text"
+				  name="comment"
+				  placeholder="Enter your comment"
+				  class="form-control"
+				  id="comment"
+				/>
+				<button class="btn btn-dark mt-3" style="visibility: hidden;" type="submit">
+				  Submit
+				</button>
+			  </form>
+			  <main>
+				<div class="row">
+				  <div class="col-sm-12">
+					<div class="well">
+						<table class="table table-borded">
+							<tbody>
+								<% for (var i = 0; i < comments.length ; i++) { %>
+								<tr>
+									<td>user name</td>
+									<td><%= comments[i].comment  %></td>
+									<td><a href="#">edit</a></td>
+									<td><a href="#">delete</a></td>
+									<td><button>reply</button></td>
+								</tr>
+								<% } %>
+							</tbody>	
+						</table>
+					</div>
+				  </div>
+				</div>
+			</main>
+			</footer>
+
 			<!-- End footer Area -->	
 
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
