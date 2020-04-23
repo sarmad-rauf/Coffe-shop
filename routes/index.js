@@ -4,6 +4,7 @@ const User = require('../models/User');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const Comment=require('../models/comment');
+const {ensureAuthenticated}= require('../config/auth');
 
 //Welcome page...
 router.get("/", (req, res) => {
@@ -35,7 +36,7 @@ router.get('/contact', (req, res) => res.render('contact'));
 
  
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', ensureAuthenticated, (req, res) => {
     User.find((err, docs) => {
         if (err) {
             console.log('Errror in get data ');
