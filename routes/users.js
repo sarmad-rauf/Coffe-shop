@@ -73,6 +73,7 @@ router.post('/register', (req, res) => {
                   'success_msg',
                   'You are now registered and can log in'
                 );
+                console.log(newUser.name);
                 res.redirect('/users/login');
               })
               .catch(err => console.log(err));
@@ -124,26 +125,14 @@ User.findById(req.params.id, function(err, User){
   })
   // edit delete
   router.post('/edit/:id', (req, res) => {
-    
-    // if (!ObjectId.isValid(req.params.id))
-    //     return res.status(400).send(`No record with given id : ${req.params.id}`);
-// above 2 lines check that 
-// ObjectId is valid or not 
-// ObjectId of mongoose 
-// ObjectId means , that id which you will need to edit and delete
+
     var emp = {
-        // if ObjectId is valid then check require fields
-        // req.body ??? 
-        // get all fields from req.body which you want update like name, postion, against that id which is already set parms 
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
         password2: req.body.password2,
     };
-    // now you can use this query for update 
-    // if id == "right"
-    // then update my record
-// working :edit records
+    
     User.findByIdAndUpdate(req.params.id, { $set: emp }, { new: true }, (err, doc) => {
         if (!err) { res.redirect('/dashboard'); }
         else { console.log("Error"); }
@@ -153,10 +142,6 @@ User.findById(req.params.id, function(err, User){
 
 
 router.get('/delete/:id',(req,res)=>{
-  
-    // if (!ObjectId.isValid(req.params.id))
-    //     return res.status(400).send(`No record with given id aa : ${req.params.id}`);
-// working :delete records
 User.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err){
         res.redirect('/dashboard')

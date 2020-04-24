@@ -5,6 +5,10 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    comment_name:{
+        type: String,
+        required: true
+    }
     });
 
     const Comment = mongoose.model('Comment', CommentSchema);

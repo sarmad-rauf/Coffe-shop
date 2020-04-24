@@ -143,19 +143,37 @@
 				  class="form-control"
 				  id="comment"
 				/>
-				<button class="btn btn-dark mt-3" style="visibility: hidden;" type="submit">
+				<input
+				  style="height: 100px;"
+				  type="text"
+				  name="comment_name"
+				  placeholder="Enter your name"
+				  class="form-control"
+				  id="comment_name"
+				/>
+				<button class="btn btn-dark mt-3" type="submit">
 				  Submit
 				</button>
+				<br>
+				<br>
 			  </form>
 			  <main>
 				<div class="row">
 				  <div class="col-sm-12">
 					<div class="well">
 						<table class="table table-borded">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Comment</th>
+									
+									<th colspan="2">action</th>
+								</tr>
+							</thead>
 							<tbody>
 								<% for (var i = 0; i < comments.length ; i++) { %>
 								<tr>
-									<td>user name</td>
+									<td> <%= comments[i].comment_name  %></td>
 									<td><%= comments[i].comment  %></td>
 									<td><a href="#">edit</a></td>
 									<td><a href="#">delete</a></td>
