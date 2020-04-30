@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
       }
     });
   });
-  router.post("/", ensureAuthenticated1, async (req, res) => {
+  router.post("/", async (req, res) => {
     try {
       if (!req.body) {
         console.log("body is empty");
