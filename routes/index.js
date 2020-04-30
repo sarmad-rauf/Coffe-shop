@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const Comment=require('../models/comment');
 const {ensureAuthenticated}= require('../config/auth');
+const {ensureAuthenticated1}= require('../config/auth');
 
 //Welcome page...
 router.get("/", (req, res) => {
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
       }
     });
   });
-  router.post("/", async (req, res) => {
+  router.post("/", ensureAuthenticated1, async (req, res) => {
     try {
       if (!req.body) {
         console.log("body is empty");
