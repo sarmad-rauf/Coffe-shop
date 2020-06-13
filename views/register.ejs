@@ -49,6 +49,22 @@
             value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
           />
         </div>
+        <div class="form-group">
+          <label for="role">Confirm Your role</label> <br>
+          <input
+           type="role" id="role" name="role" placeholder="Type your role(marketing,customer,supplier)"  class="form-control" 
+           value="<%= typeof role != 'undefined' ? role : '' %>"
+          />
+
+          <!-- <input
+           type="radio" id="supplier" name="supplier"  class="form-control" 
+           value="<%= typeof supplier != 'undefined' ? supplier : '' %>"
+           /><label for="supplier">Supplier</label> <br>
+          <input
+           type="radio" id="marketing" name="marketing"  class="form-control" 
+           value="<%= typeof marketing != 'undefined' ? marketing : '' %>"/>
+           <label for="marketing">Marketing</label> <br>    
+        </div> -->
         <!-- <div class="form-group">
           <label for="cofee">Number of cofee cups</label>
           <input

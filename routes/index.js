@@ -70,7 +70,7 @@ router.post('/contact', (req, res) => {
     secure: false, 
     auth: {
         user: 'sarmadrauf@gmail.com', 
-        pass: 'ustadabbas1122'  
+        pass: 'Tigress@1122'  
     },
     tls:{
       rejectUnauthorized:false
@@ -94,7 +94,7 @@ router.post('/contact', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('first');
+      res.render('login');
   });
 });
 

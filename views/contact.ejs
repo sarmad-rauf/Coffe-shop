@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    
+function validateForm() {
+  var x = document.forms["myForm"]["name"].value;
+  if (x == "") {
+    alert("You must fill all fields");
+    return false;
+  }
+
+var y = document.forms["myForm"]["message"].value;
+  if (y == "") {
+    alert("You must fill all fields");
+    return false;
+  }
+
+var z = document.forms["myForm"]["email"].value;
+  if (z == "") {
+    alert("You must fill all fields");
+    return false;
+  }
+
+var w = document.forms["myForm"]["phone"].value;
+  if (w == "") {
+    alert("You must fill all fields");
+    return false;
+  }
+}
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Acme Web Design</title>
+  <title>Contact Friends cafe</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
  
@@ -132,14 +160,14 @@ ul{
       <div class="contact">
         <h3>Email Us</h3>
         <%- include ('./partials/messages') %>
-        <form method="POST" action="/contact">
+        <form name="myForm" method="POST" action="/contact" onsubmit="return validateForm()">
           <p>
             <label>Name</label>
             <input type="text" name="name">
           </p>
           <p>
             <label>Company</label>
-            <input type="text" name="company">
+            <input type="text" placeholder="optional" name="company">
           </p>
           <p>
             <label>Email Address</label>
@@ -157,8 +185,10 @@ ul{
             <button type="submit">Submit</button>
           </p>
         </form>
+        <p>Your email will be sent if you are redirected to login page</p>
       </div>
     </div>
   </div>
 </body>
+
 </html>
