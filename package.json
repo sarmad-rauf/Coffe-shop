@@ -20,7 +20,10 @@
     "express-ejs-layouts": "^2.5.0",
     "express-handlebars": "^4.0.3",
     "express-session": "^1.17.1",
+<<<<<<< HEAD
     "git": "^0.1.5",
+=======
+>>>>>>> b43593e2fc9d6b21be6a7aa0edc67d2fa2b43df7
     "mongoose": "^5.9.9",
     "nodemailer": "^6.4.6",
     "passport": "^0.4.1",
@@ -28,6 +31,10 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "nodemon": "^2.0.4"
+=======
+    "nodemon": "^2.0.2"
+>>>>>>> b43593e2fc9d6b21be6a7aa0edc67d2fa2b43df7
   }
 }
