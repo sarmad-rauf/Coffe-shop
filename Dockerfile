@@ -1,9 +1,9 @@
-FROM node:7              # Sets the base image
+FROM node:7             
 
 RUN mkdir -p /app
-WORKDIR /app             # Sets the working directory in the container
-COPY package.json /app   # copy the dependencies file to the working directory
-RUN npm install          # Install dependencies
-COPY . /app       # Copy the content of the local src directory to the working directory
+WORKDIR /app            
+COPY package.json /app   
+RUN npm install          
+COPY . /app       
 EXPOSE 4200
 CMD ["npm", "run", "start"]
