@@ -12,7 +12,7 @@ node {
       }  
     }
      stage('Push Image'){
-       docker logout   
+       docker login -u "sarmadrauf" -p "Tigress@1122" docker.io   
        docker.withRegistry('https://registry.hub.docker.com', ) {            
        app.push("${env.BUILD_NUMBER}")            
        app.push("latest")   
