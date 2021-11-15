@@ -11,11 +11,16 @@ node {
          sh 'echo "TEST PASSED"' 
       }  
     }
-     stage('Push Image'){
-       docker login -u "sarmadrauf" -p "Tigress@1122" docker.io   
-       docker.withRegistry('https://registry.hub.docker.com', ) {            
-       app.push("${env.BUILD_NUMBER}")            
-       app.push("latest")   
-   }
+      
+   stage('Push image') {
+    withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+        def registry_url = "registry.hub.docker.com/"
+        bat "docker login -u $USER -p $PASSWORD ${registry_url}"
+        docker.withRegistry("http://${registry_url}", "docker-hub-credentials") {
+            // Push your image now
+            bat "docker push username/foldername:build"
+        }
+    }
 }
+
 }
