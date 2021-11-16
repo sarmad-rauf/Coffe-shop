@@ -12,7 +12,7 @@ node {
       }  
     }
      stage('Push Image'){
-       docker.withRegistry([ credentialsId: "sarmadrauf", url: "https://hub.docker.com/repository/docker/sarmadrauf/dockerdemo" ]) {            
+       docker.withRegistry([  credentialsId: "docker-hub-credentials", url: "" ]) {            
        app.push("${env.BUILD_NUMBER}")            
        app.push("latest")   
    }
