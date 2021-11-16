@@ -11,6 +11,9 @@ node {
          sh 'echo "TEST PASSED"' 
       }  
     }
+     stage('Login'){
+       docker login -u "sarmdrauf" -p "Tigress@1122" docker.io  
+     }
      stage('Push Image'){
        docker.withRegistry('https://registry.hub.docker.com') {            
        app.push("${env.BUILD_NUMBER}")            
